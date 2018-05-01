@@ -9,7 +9,7 @@
   while ($row = mysqli_fetch_array($result)) { 
 	if ($row['status']==0) {
 		$income = floatval($coin->getreceivedbyaddress($row['address']));
-		$price = floatval($row['amount']);
+		$price = floatval($row['amount']/1000);
 		if ($income>=$price) {
 			if ($income>0) $coin->sendtoaddress($row['receive'],$income);
 			mysqli_query($link,'UPDATE `payments` SET status=1 WHERE id=' . $row['id'] . ';');
