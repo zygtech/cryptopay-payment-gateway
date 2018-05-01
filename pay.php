@@ -20,7 +20,7 @@
 <body>
 <center>
 <img src="qr.php?addr=<?php echo $addr; ?>"><br />
-<?php echo $addr; ?><br /><h3>Price: <?php echo $_GET['amount']; ?> CTC</h3>
+<?php echo $addr; ?><br /><h3>Price: <?php echo $_GET['amount']; ?> mCTC</h3>
 </center>
 </body>
 
