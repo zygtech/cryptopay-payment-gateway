@@ -11,7 +11,6 @@ add_action('plugins_loaded', 'woocommerce_cryptocoin_init', 0);
 add_action('woocommerce_after_register_post_type', 'check_ctc_response',0);
 
     function check_ctc_response(){
-        global $woocommerce;
         $query_args = array(
 			'post_type'      => wc_get_order_types(),
 			'post_status'    => 'wc-pending',
@@ -27,8 +26,7 @@ add_action('woocommerce_after_register_post_type', 'check_ctc_response',0);
 				
 				if (substr($check,0,5)=='Payed') {
 					$order -> payment_complete();
-					$order -> add_order_note('Cryptocoin payment successful.');
-					if ($woocommerce -> cart!=null) $woocommerce -> cart -> empty_cart();                            
+					$order -> add_order_note('Cryptocoin payment successful.');                            
 				}
 			
 				if (substr($check,0,6)=='Failed') {				
@@ -115,7 +113,9 @@ function woocommerce_cryptocoin_init(){
      * Process the payment and return the result
      **/
      function process_payment($order_id){
+	global $woocommerce;
         $order = new WC_Order($order_id);
+	if ($woocommerce -> cart!=null) $woocommerce -> cart -> empty_cart();
         return array('result' => 'success', 'redirect' => 'http://domain.com/pay.php?id=' . $order_id . '&site=' . get_site_url() . '&amount=' . $order -> order_total . '&my_address=' . $this -> my_address
         );
     }
