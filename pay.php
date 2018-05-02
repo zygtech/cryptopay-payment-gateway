@@ -4,8 +4,8 @@
   $addr = $coin->getnewaddress();
   $link = mysqli_connect('localhost', 'user', 'pass', 'database');
   mysqli_set_charset($link,'utf8');
-  if ($_GET['hash']==md5($_GET['id'] . $_GET['site'] . $_GET['amount'] . $_GET['my_address'] . 'CryptoCoin')) {
-    mysqli_query($link,'INSERT INTO `payments` VALUES (0,' . $_GET['id'] . ',"' . $_GET['site'] . '","' . $addr . '",' . $_GET['amount'] . ',"' . $_GET['my_address'] . '",NOW(),0);');
+  if ($_GET['hash']==md5($_GET['id'] . $_GET['site'] . $_GET['amount'] . base64_decode($_GET['my_address']) . 'CryptoCoin')) {
+    mysqli_query($link,'INSERT INTO `payments` VALUES (0,' . $_GET['id'] . ',"' . $_GET['site'] . '","' . $addr . '",' . $_GET['amount'] . ',"' . base64_decode($_GET['my_address']) . '",NOW(),0);');
 ?>
 <!DOCTYPE html>
 <html lang="en">
