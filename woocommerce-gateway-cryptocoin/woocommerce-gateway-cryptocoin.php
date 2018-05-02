@@ -132,7 +132,7 @@ function woocommerce_cryptocoin_init(){
 	global $woocommerce;
         $order = new WC_Order($order_id);
 	if ($woocommerce -> cart!=null) $woocommerce -> cart -> empty_cart();
-        return array('result' => 'success', 'redirect' => 'http://domain.com/pay.php?id=' . $order_id . '&site=' . get_site_url() . '&amount=' . $order -> order_total . '&my_address=' . $this -> my_address
+        return array('result' => 'success', 'redirect' => 'http://domain.com/pay.php?id=' . $order_id . '&site=' . get_site_url() . '&amount=' . $order -> order_total . '&my_address=' . $this -> my_address . '&hash=' . md5($order_id . get_site_url() . $order -> order_total . $this -> my_address . 'CryptoCoin')
         );
     }
  
