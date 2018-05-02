@@ -7,6 +7,23 @@ Version: 0.1
 Author: Chris Hrybacz
 Author URI: http://www.zygtech.pl
 */
+
+add_filter( 'woocommerce_currencies', 'add_my_currency' );
+
+function add_my_currency( $currencies ) {
+     $currencies['CTC'] = 'Cryptocoins';
+     return $currencies;
+}
+
+add_filter('woocommerce_currency_symbol', 'add_my_currency_symbol', 10, 2);
+
+function add_my_currency_symbol( $currency_symbol, $currency ) {
+     switch( $currency ) {
+          case 'CTC': $currency_symbol = 'mCTC'; break;
+     }
+     return $currency_symbol;
+}
+
 add_action('plugins_loaded', 'woocommerce_cryptocoin_init', 0);
 add_action('woocommerce_after_register_post_type', 'check_ctc_response',0);
 
