@@ -113,6 +113,7 @@ function woocommerce_cryptocoin_init(){
         echo '<table class="form-table">';
         // Generate the HTML For the settings form.
         $this -> generate_settings_html();
+	echo '<a href="https://play.google.com/store/apps/details?id=org.electrum.electrumctc" target="_blank">Download Android Wallet</a>';
         echo '</table>';
  
     }
