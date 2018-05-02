@@ -25,13 +25,11 @@ add_action('woocommerce_after_register_post_type', 'check_ctc_response',0);
 			$check = file_get_contents('http://domain.com/check.php?o=' . $order->ID . '&s=' . get_site_url());
 				
 				if (substr($check,0,5)=='Payed') {
-					$order -> payment_complete();
-					$order -> add_order_note('Cryptocoin payment successful.');                            
+					$order -> payment_complete();                           
 				}
 			
 				if (substr($check,0,6)=='Failed') {				
 					$order -> update_status('failed');
-					$order -> add_order_note('Failed');
 				}
 			
 		}
