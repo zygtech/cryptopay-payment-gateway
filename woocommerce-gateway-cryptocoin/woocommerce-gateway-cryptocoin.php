@@ -13,7 +13,7 @@ add_action('woocommerce_after_register_post_type', 'check_ctc_response',0);
     function check_ctc_response(){
         $query_args = array(
 			'post_type'      => wc_get_order_types(),
-			'post_status'    => 'wc-pending',
+			'post_status'    => [ 'wc-pending' ],
 			'posts_per_page' => 999999999999,
 		);
 
