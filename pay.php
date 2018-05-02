@@ -21,7 +21,7 @@
 <body>
 <center>
 <img src="qr.php?addr=<?php echo $addr; ?>"><br />
-<?php echo $addr; ?><br /><h3>Price: <?php echo $_GET['amount']; ?> mCTC<br /><br /><a href="<?php echo $_GET['site']; ?>">BACK TO SITE</a></h3>
+<?php echo $addr; ?><br /><h3>Price: <?php echo $_GET['amount']; ?> mCTC<br /><br /><a href="<?php echo $_GET['site']; ?>">BACK TO SHOP</a></h3>
 </center>
 </body>
 
